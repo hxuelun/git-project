@@ -16,3 +16,8 @@
 
 #### 删除文件
 - git rm test.txt  从版本库中删除该文件
+
+#### 查看记录
+- git log 
+- git reflog
+- git log --oneline
