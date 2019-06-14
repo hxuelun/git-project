@@ -21,7 +21,7 @@
 - git branch -d dev  删除分支  合并完成后，就可以使用git branch -d dev 删除dev分支
 
 #### 删除文件
-- git rm test.txt  从版本库中删除该文件  然后在使用 git commit -m "删除了test.txt文件" 命令提交，文件就从版本库
+- git rm test.txt  从版本库中删除该文件  然后在使用 git commit -m "删除了test.txt文件" 命令提交，文件就从版本库中删除了
 
 #### 查看状态
 - git status  查看文件状态   文件状态的简写（M - 修改， A - 添加， D - 删除， R - 重命名，?? - 未追踪）
