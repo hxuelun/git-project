@@ -33,6 +33,7 @@
 一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；
 一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
 总之，就是让这个文件回到最近一次git commit或git add时的状态
+- git reset HEAD readme.txt  如果已经把修改的文件添加到了暂存区，可以使用 git reset HEAD readme.txt把暂存区的修改撤销掉（unstage），重新放回工作区，然后用 git checkout -- readme.txt 命令丢弃或撤销工作区的修改
 
 #### 版本回退
 - git reset --hard commit_id
