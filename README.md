@@ -27,3 +27,6 @@
 - git log 
 - git reflog
 - git log --oneline
+
+#### 版本回退
+- git reset --hard commit_id
