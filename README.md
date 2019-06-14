@@ -21,12 +21,22 @@
 - git branch -d dev  删除分支  合并完成后，就可以使用git branch -d dev 删除dev分支
 
 #### 删除文件
-- git rm test.txt  从版本库中删除该文件  然后在使用 git commit -m "删除了test.txt文件" 命令提交，文件就从版本库中删除了
+- git rm test.txt  从版本库中删除该文件  然后在使用 git commit -m "删除了test.txt文件" 命令提交，文件就从版本库
+
+#### 查看状态
+- git status  查看文件状态   文件状态的简写（M - 修改， A - 添加， D - 删除， R - 重命名，?? - 未追踪）
 
 #### 查看记录
-- git log 
-- git reflog
-- git log --oneline
+- git log   可以查看详细的提交历史，以便确定要回退到哪个版本
+- git log --oneline  可以查看简洁的提交历史，以便确定要回退到哪个版本
+- git reflog  用git reflog查看命令历史，以便确定要回到未来的哪个版本
+
+#### 撤销修改
+- git checkout -- readme.txt  命令git checkout -- readme.txt意思就是，把readme.txt文件在工作区的修改全部撤销，这里有两种情况：
+一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；
+一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
+总之，就是让这个文件回到最近一次git commit或git add时的状态
+- git reset HEAD readme.txt  如果已经把修改的文件添加到了暂存区，可以使用 git reset HEAD readme.txt把暂存区的修改撤销掉（unstage），重新放回工作区，然后用 git checkout -- readme.txt 命令丢弃或撤销工作区的修改
 
 #### 版本回退
 - git reset --hard commit_id
