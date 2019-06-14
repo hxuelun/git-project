@@ -6,11 +6,12 @@
 
 #### 初始化本地仓库
 - git init 初始化本地仓库
--  git remote add origin git@github.com:hxuelun/git-project.git  关联远程仓库
--  git add ./ 添加这一级目录所有文件到暂存区  或 git add README.md 添加某个文件到暂存区
--  git commit -m 提交暂存区的文件到本地版本库
--  git commit -a -m  添加到暂存区并且提交到本地版本库   相当于git add . 和 git commit -m 命令的合并
--  git push -u origin master  本地库的内容推送到远程，用git push命令，实际上是把当前分支master推送到远程，由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。
+- git remote add origin git@github.com:hxuelun/git-project.git  关联远程仓库
+- git add ./ 添加这一级目录所有文件到暂存区  或 git add README.md 添加某个文件到暂存区
+- git add .  批量把当前目录下所有修改过的文件添加到暂存区
+- git commit -m 提交暂存区的文件到本地版本库
+- git commit -a -m  添加到暂存区并且提交到本地版本库   相当于git add . 和 git commit -m 命令的合并
+- git push -u origin master  本地库的内容推送到远程，用git push命令，实际上是把当前分支master推送到远程，由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令,使用git push 命令推送。
 
 ##### 切换分支
 - git branch dev 创建一个dev分支
@@ -40,4 +41,15 @@
 
 #### 版本回退
 - git reset --hard commit_id
-- 后续继续添加内容
+
+
+
+#### 配置信息
+- 配置用户名：git config user.name "testName"
+- 配置邮箱 : git config user.email "test@sina.com"
+- 查看配置信息: git config --list
+
+#### git生成SSH Key
+- ssh-keygen -t rsa -C "347609357@qq.com"     使用这个命令生成SSH Key的时候会有一个地方需要输入SSH Key的安全密码，可以直接按回车键不用设置，当然设置密码也可以，设置了密码自己记住就行
+- 然后找到 .ssh文件，里面有几个文件，找到id_rsa和id_rsa.pub，一个是私钥，一个是公钥，把id_rsa.pub文件里面的字符串复制到github中ssh key中添加
+
