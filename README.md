@@ -44,6 +44,7 @@
 #### 版本回退
 - git reset --hard commit_id
 
+#### git创建分支及合并分支代码
 
 #### 配置信息
 - 配置用户名：git config user.name "testName"
