@@ -19,6 +19,8 @@
 - git checkout -b dev  创建dev分支，然后切换到dev分支,git checkout命令加上-b参数表示创建并切换
 - git branch 查看分支
 - git merge dev  合并dev分支   合并之前需要先切回到主分支，然后使用命令用于合并指定分支到当前分支
+
+#### 删除分支
 - git branch -d dev  删除分支  合并完成后，就可以使用git branch -d dev 删除dev分支
 
 #### 删除文件
@@ -41,7 +43,6 @@
 
 #### 版本回退
 - git reset --hard commit_id
-
 
 
 #### 配置信息
