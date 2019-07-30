@@ -54,3 +54,4 @@
 - ssh-keygen -t rsa -C "347609357@qq.com"     使用这个命令生成SSH Key的时候会有一个地方需要输入SSH Key的安全密码，可以直接按回车键不用设置，当然设置密码也可以，设置了密码自己记住就行
 - 然后找到 .ssh文件，里面有几个文件，找到id_rsa和id_rsa.pub，一个是私钥，一个是公钥，把id_rsa.pub文件里面的字符串复制到github中ssh key中添加
 
+### hxl
