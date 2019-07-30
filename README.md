@@ -56,11 +56,11 @@ Git push origin dev-20180622
 
 - 1、创建分支步骤
     - 1、切换分支：新的分支需要从哪个分支切出来就切换到那个分支。
-    - 2、执行：git branch <branchname>命令创建新分支
-    - 3、切换分支：执行git checkout <branchname>命令切换到新分支
-    - 4、push到服务器：git push origin <branchname>
+    - 2、执行：git branch branchname 命令创建新分支
+    - 3、切换分支：执行git checkout branchname 命令切换到新分支
+    - 4、push到服务器：git push origin branchname
     - 5、git pull时会提示如下信息：
-      git branch --set-upstream-to=origin/<branch> dev-20180613  
+      git branch --set-upstream-to=origin/《branch》 dev-20180613  
       修改上面的代码，如下：
       执行：git branch --set-upstream-to=origin/dev-20180613 dev-20180613
       此时就可以正常git pull
