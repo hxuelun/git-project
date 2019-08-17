@@ -66,6 +66,9 @@ Git push origin dev-20180622
       执行：git branch --set-upstream-to=origin/dev-20180613 dev-20180613
       此时就可以正常git pull
 
+### git连接远程分支
+- git push origin dev //将本地dev分支推送到远程
+- git checkout -b dev origin/dev //创建远程origin的dev分支到本地
 
 #### 配置信息
 - 配置用户名：git config user.name "testName"
