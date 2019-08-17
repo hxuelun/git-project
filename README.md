@@ -22,7 +22,9 @@
 - git merge dev  合并dev分支   合并之前需要先切回到主分支，然后使用命令用于合并指定分支到当前分支
 
 #### 删除分支
-- git branch -d dev  删除分支  合并完成后，就可以使用git branch -d dev 删除dev分支
+- git branch -d dev  删除本地dev分支  合并完成后，就可以使用git branch -d dev 删除dev分支
+- git branch -D dev  强制删除本地dev分支
+- git push origin --delete dev  删除远程dev分支
 
 #### 删除文件
 - git rm test.txt  从版本库中删除该文件  然后在使用 git commit -m "删除了test.txt文件" 命令提交，文件就从版本库中删除了
@@ -67,11 +69,14 @@ Git push origin dev-20180622
       此时就可以正常git pull
 
 ### git连接远程分支
-- git push <远程主机名> <本地分支名>:<远程分支名>
-- git push origin master:master  
+- git push <远程主机名>  <本地分支名>:<远程分支名>
+- git push origin master:master  //如果省略远程分支名，则表示将本地分支推送与之存在"追踪关系"的远程分支（通常两者同名），如果该远程分支不存在，则会被新建。
+- git push origin dev //将本地dev分支推送到远程,这条命令表示，将本地的dev分支推送到origin主机的dev分支。如果后者不存在，则会被新建。
 
-- git push origin dev //将本地dev分支推送到远程
-- git checkout -b dev origin/dev //创建远程origin的dev分支到本地
+- git checkout -b dev origin/dev //创建远程origin的dev分支到本地,
+- git checkout -b 本地分支名 origin/远程分支名   // 这个就是上面命令的解释，将远程git仓库里的指定分支拉取到本地（本地不存在的分支）
+这个将会自动创建一个新的本地分支，并与指定的远程分支关联起来，例如远程仓库里有个分支dev2,我本地没有该分支，我要把dev2拉到我本地：
+git checkout -b dev2 origin/dev2  这条命令若成功，将会在本地创建新分支dev2,并自动切到dev2上。
 
 
 #### 配置信息
