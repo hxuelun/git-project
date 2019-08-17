@@ -67,8 +67,12 @@ Git push origin dev-20180622
       此时就可以正常git pull
 
 ### git连接远程分支
+- git push <远程主机名> <本地分支名>:<远程分支名>
+- git push origin master:master  
+
 - git push origin dev //将本地dev分支推送到远程
 - git checkout -b dev origin/dev //创建远程origin的dev分支到本地
+
 
 #### 配置信息
 - 配置用户名：git config user.name "testName"
