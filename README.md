@@ -2,7 +2,7 @@
 
 #### 克隆
 - git clone https://github.com/hxuelun/git-project.git  克隆所有分支
-- git clone -b dev https://github.com/hxuelun/git-project.git  克隆某个分支
+- git clone -b dev https://github.com/hxuelun/git-project.git  克隆一个分支叫dev的远程仓库到本地
 
 #### 初始化本地仓库
 - git init 初始化本地仓库
