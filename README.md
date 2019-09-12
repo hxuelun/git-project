@@ -18,10 +18,13 @@
 - git checkout dev 切换分支
 - git checkout -b dev  创建dev分支，然后切换到dev分支,git checkout命令加上-b参数表示创建并切换
 - git branch 查看分支
+- git branch -a 查看远程分支
 - git merge dev  合并dev分支   合并之前需要先切回到主分支，然后使用命令用于合并指定分支到当前分支
 
 #### 删除分支
-- git branch -d dev  删除分支  合并完成后，就可以使用git branch -d dev 删除dev分支
+- git branch -d dev  删除本地dev分支  合并完成后，就可以使用git branch -d dev 删除dev分支
+- git branch -D dev  强制删除本地dev分支
+- git push origin --delete dev  删除远程dev分支
 
 #### 删除文件
 - git rm test.txt  从版本库中删除该文件  然后在使用 git commit -m "删除了test.txt文件" 命令提交，文件就从版本库中删除了
@@ -65,6 +68,17 @@ Git push origin dev-20180622
       执行：git branch --set-upstream-to=origin/dev-20180613 dev-20180613
       此时就可以正常git pull
 
+### git连接远程分支
+- git push <远程主机名>  <本地分支名>:<远程分支名>
+- git push origin master:master  //如果省略远程分支名，则表示将本地分支推送与之存在"追踪关系"的远程分支（通常两者同名），如果该远程分支不存在，则会被新建。
+- git push origin dev //将本地dev分支推送到远程,这条命令表示，将本地的dev分支推送到origin主机的dev分支。如果后者不存在，则会被新建。
+- git push origin :dev  //这条命令省略本地分支名，则表示删除指定的远程dev分支，因为这等同于推送一个空的本地分支到远程分支。git push origin :dev 等同于 git push origin --delete dev
+
+- git checkout -b dev origin/dev //创建远程origin的dev分支到本地
+- git checkout -b 本地分支名 origin/远程分支名   // 这个就是上面命令的解释，将远程git仓库里的指定分支拉取到本地（本地不存在的分支）
+这个将会自动创建一个新的本地分支，并与指定的远程分支关联起来，例如远程仓库里有个分支dev2,我本地没有该分支，我要把dev2拉到我本地：
+git checkout -b dev2 origin/dev2  这条命令若成功，将会在本地创建新分支dev2,并自动切到dev2上。
+
 
 #### 配置信息
 - 配置用户名：git config user.name "testName"
@@ -75,4 +89,7 @@ Git push origin dev-20180622
 - ssh-keygen -t rsa -C "347609357@qq.com"     使用这个命令生成SSH Key的时候会有一个地方需要输入SSH Key的安全密码，可以直接按回车键不用设置，当然设置密码也可以，设置了密码自己记住就行
 - 然后找到 .ssh文件，里面有几个文件，找到id_rsa和id_rsa.pub，一个是私钥，一个是公钥，把id_rsa.pub文件里面的字符串复制到github中ssh key中添加
 
-### hxl
+
+### <font color='red'>注意</font>
+- 如果在远程代码库创建的分支，直接 git branch -a 是显示不出来远程分支的，需要git pull拉取之后，再git branch -a 才能看到远程分支
+
