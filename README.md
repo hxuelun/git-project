@@ -68,7 +68,7 @@ Git push origin dev-20180622
       git branch --set-upstream-to=origin/《branch》 dev-20180613  
       修改上面的代码，如下：
       执行：git branch --set-upstream-to=origin/dev-20180613 dev-20180613
-      此时就可以正常git pull
+      此时就可以正常git pull, 其中origin/dev-20180613是你本地分支对应的远程分支；your_branch是你当前的本地分支。
 
 ### git连接远程分支
 - git push <远程主机名>  <本地分支名>:<远程分支名>
