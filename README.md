@@ -25,6 +25,8 @@
 - git branch -d dev  删除本地dev分支  合并完成后，就可以使用git branch -d dev 删除dev分支
 - git branch -D dev  强制删除本地dev分支
 - git push origin --delete dev  删除远程dev分支
+- git push origin :dev  删除远程dev分支，等同于git push origin --delete dev 
+- git remote prune origin 删除本地分支存在但是远程分支已经不存在的分支，这条命令只会同步本地和远程有过关联关系的分支，原先在本地从来没有推到远程的分支是不会有任何变化，即不会删除也不会被推送到远程
 
 #### 删除文件
 - git rm test.txt  从版本库中删除该文件  然后在使用 git commit -m "删除了test.txt文件" 命令提交，文件就从版本库中删除了
