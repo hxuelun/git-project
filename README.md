@@ -87,7 +87,8 @@ git checkout -b dev2 origin/dev2  这条命令若成功，将会在本地创建�
  已经不存在的分支，根据提示，使用git remote prune origin 命令，这样就可以删除那些远程仓库不存在的分支
 
 ### 查看当前的远程库
-- git remote  要查看当前配置有哪些远程仓库，可以用 git remote 命令，它会列出每个远程库的简短名字。在克隆完某个项目后，至少可以看到一个名为 origin 的远程库，Git 默认使用这个名字来标识你所克隆的原始仓库,也可以加上 -v 选项（译注：此为 --verbose 的简写，取首字母），显示对应的克隆地址：<br/>$ git remote -v <br/>
+- git remote  要查看当前配置有哪些远程仓库，可以用 git remote 命令，它会列出每个远程库的简短名字。在克隆完某个项目后，至少可以看到一个名为 origin 的远程库，Git 默认使用这个名字来标识你所克隆的原始仓库,也可以加上 -v 选项（译注：此为 --verbose 的简写，取首字母），显示对应的克隆地址：<br/>
+$ git remote -v <br/>
 origin  git://github.com/schacon/ticgit.git (fetch)<br/>
 origin  git://github.com/schacon/ticgit.git (push)
 
