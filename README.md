@@ -17,8 +17,9 @@
 - git branch dev 创建一个dev分支
 - git checkout dev 切换分支
 - git checkout -b dev  创建dev分支，然后切换到dev分支,git checkout命令加上-b参数表示创建并切换
-- git branch 查看分支
-- git branch -a 查看远程分支
+- git branch 查看本地分支
+- git branch -r 查看远程分支
+- git branch -a 查看本地分支和远程分支
 - git merge dev  合并dev分支   合并之前需要先切回到主分支，然后使用命令用于合并指定分支到当前分支
 
 #### 删除分支
@@ -81,6 +82,9 @@ Git push origin dev-20180622
 这个将会自动创建一个新的本地分支，并与指定的远程分支关联起来，例如远程仓库里有个分支dev2,我本地没有该分支，我要把dev2拉到我本地：
 git checkout -b dev2 origin/dev2  这条命令若成功，将会在本地创建新分支dev2,并自动切到dev2上。
 
+### 删除远程分支后，本地git branch -a 依然能看到删除的远程分支的解决办法
+ - git remote show origin 可以查看remote地址，远程分支，还有本地分支与之相对应关系等信息，此时我们就可以看到那些远程仓库
+ 已经不存在的分支，根据提示，使用git remote prune origin 命令，这样就可以删除那些远程仓库不存在的分支
 
 #### 配置信息
 - 配置用户名：git config user.name "testName"
