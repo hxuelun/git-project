@@ -87,19 +87,22 @@ git checkout -b dev2 origin/dev2  这条命令若成功，将会在本地创建�
  已经不存在的分支，根据提示，使用git remote prune origin 命令，这样就可以删除那些远程仓库不存在的分支
 
 ### 查看当前的远程库
-- git remote  要查看当前配置有哪些远程仓库，可以用 git remote 命令，它会列出每个远程库的简短名字。在克隆完某个项目后，至少可以看到一个名为 origin 的远程库，Git 默认使用这个名字来标识你所克隆的原始仓库,也可以加上 -v 选项（译注：此为 --verbose 的简写，取首字母），显示对应的克隆地址：<br/>
-$ git remote -v <br/>
-origin  git://github.com/schacon/ticgit.git (fetch)<br/>
-origin  git://github.com/schacon/ticgit.git (push)
-
+- git remote  要查看当前配置有哪些远程仓库，可以用 git remote 命令，它会列出每个远程库的简短名字。在克隆完某个项目后，至少可以看到一个名为 origin 的远程库，Git 默认使用这个名字来标识你所克隆的原始仓库,也可以加上 -v 选项（译注：此为 --verbose 的简写，取首字母），显示对应的克隆地址：
+  ```
+  $ git remote -v 
+  origin  git://github.com/schacon/ticgit.git (fetch)
+  origin  git://github.com/schacon/ticgit.git (push)
+  ```
 ### 添加远程仓库
-- git remote add [shortname] [url]，要添加一个新的远程仓库，可以指定一个简单的名字，以便将来引用，运行 git remote add [shortname] [url]，<br/>
-$ git remote <br/>
-origin<br/>
-$ git remote add pb git://github.com/paulboone/ticgit.git<br/>
-$ git remote -v<br/>
-origin  git://github.com/schacon/ticgit.git<br/>
-pb  git://github.com/paulboone/ticgit.git<br/>
+- git remote add [shortname] [url]，要添加一个新的远程仓库，可以指定一个简单的名字，以便将来引用，运行 git remote add [shortname] [url]，
+  ```
+  $ git remote 
+  origin
+  $ git remote add pb git://github.com/paulboone/ticgit.git
+  $ git remote -v
+  origin  git://github.com/schacon/ticgit.git
+  pb  git://github.com/paulboone/ticgit.git
+  ```
 
 ### 查看远程仓库信息
 - git remote show [remote-name] 我们可以通过命令 git remote show [remote-name] 查看某个远程仓库的详细信息
