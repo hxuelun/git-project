@@ -120,5 +120,5 @@ git checkout -b dev2 origin/dev2  这条命令若成功，将会在本地创建�
 - 然后找到 .ssh文件，里面有几个文件，找到id_rsa和id_rsa.pub，一个是私钥，一个是公钥，把id_rsa.pub文件里面的字符串复制到github中ssh key中添加
 
 
-### <font color='red'>注意</font>
+### <font color='red'> 注意 </font>
 - 如果在远程代码库创建的分支，直接 git branch -a 是显示不出来远程分支的，需要git pull拉取之后，再git branch -a 才能看到远程分支
