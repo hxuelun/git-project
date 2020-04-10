@@ -21,6 +21,7 @@
 - git branch -r 查看远程分支
 - git branch -a 查看本地分支和远程分支
 - git merge dev  合并dev分支   合并之前需要先切回到主分支，然后使用命令用于合并指定分支到当前分支
+- git branch -vv 查看本地分支和远程分支的跟踪关系
 
 #### 删除分支
 - git branch -d dev  删除本地dev分支  合并完成后，就可以使用git branch -d dev 删除dev分支
