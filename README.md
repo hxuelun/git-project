@@ -2,7 +2,7 @@
 
 #### 克隆
 - git clone https://github.com/hxuelun/git-project.git  克隆所有分支
-- git clone -b dev https://github.com/hxuelun/git-project.git  克隆某个分支
+- git clone -b dev https://github.com/hxuelun/git-project.git  克隆一个分支叫dev的远程仓库到本地
 
 #### 初始化本地仓库
 - git init 初始化本地仓库
@@ -17,14 +17,17 @@
 - git branch dev 创建一个dev分支
 - git checkout dev 切换分支
 - git checkout -b dev  创建dev分支，然后切换到dev分支,git checkout命令加上-b参数表示创建并切换
-- git branch 查看分支
-- git branch -a 查看远程分支
+- git branch 查看本地分支
+- git branch -r 查看远程分支
+- git branch -a 查看本地分支和远程分支
 - git merge dev  合并dev分支   合并之前需要先切回到主分支，然后使用命令用于合并指定分支到当前分支
 
 #### 删除分支
 - git branch -d dev  删除本地dev分支  合并完成后，就可以使用git branch -d dev 删除dev分支
 - git branch -D dev  强制删除本地dev分支
 - git push origin --delete dev  删除远程dev分支
+- git push origin :dev  删除远程dev分支，等同于git push origin --delete dev 
+- git remote prune origin 删除本地分支存在但是远程分支已经不存在的分支，这条命令只会同步本地和远程有过关联关系的分支，原先在本地从来没有推到远程的分支是不会有任何变化，即不会删除也不会被推送到远程
 
 #### 删除文件
 - git rm test.txt  从版本库中删除该文件  然后在使用 git commit -m "删除了test.txt文件" 命令提交，文件就从版本库中删除了
@@ -66,7 +69,7 @@ Git push origin dev-20180622
       git branch --set-upstream-to=origin/《branch》 dev-20180613  
       修改上面的代码，如下：
       执行：git branch --set-upstream-to=origin/dev-20180613 dev-20180613
-      此时就可以正常git pull
+      此时就可以正常git pull, 其中origin/dev-20180613是你本地分支对应的远程分支；your_branch是你当前的本地分支。
 
 ### git连接远程分支
 - git push <远程主机名>  <本地分支名>:<远程分支名>
@@ -74,11 +77,46 @@ Git push origin dev-20180622
 - git push origin dev //将本地dev分支推送到远程,这条命令表示，将本地的dev分支推送到origin主机的dev分支。如果后者不存在，则会被新建。
 - git push origin :dev  //这条命令省略本地分支名，则表示删除指定的远程dev分支，因为这等同于推送一个空的本地分支到远程分支。git push origin :dev 等同于 git push origin --delete dev
 
+- git checkout --track origin/branch_name 如果远程新建了一个分支，本地没有该分支,可以利用 git checkout --track origin/branch_name ，这时本地会新建一个分支名叫 branch_name ，会自动跟踪远程的同名分支 branch_name
 - git checkout -b dev origin/dev //创建远程origin的dev分支到本地
 - git checkout -b 本地分支名 origin/远程分支名   // 这个就是上面命令的解释，将远程git仓库里的指定分支拉取到本地（本地不存在的分支）
 这个将会自动创建一个新的本地分支，并与指定的远程分支关联起来，例如远程仓库里有个分支dev2,我本地没有该分支，我要把dev2拉到我本地：
 git checkout -b dev2 origin/dev2  这条命令若成功，将会在本地创建新分支dev2,并自动切到dev2上。
 
+### 删除远程分支后，本地git branch -a 依然能看到删除的远程分支的解决办法
+ - git remote show origin 可以查看remote地址，远程分支，还有本地分支与之相对应关系等信息，此时我们就可以看到那些远程仓库
+ 已经不存在的分支，根据提示，使用git remote prune origin 命令，这样就可以删除那些远程仓库不存在的分支
+
+### 本地查看不到远程新建的分支的解决方法
+- 在github网页上新建了一个新的分支，但是在本地git branch -r 查看不到这个新建的远程分支。
+git是分布式的这个设计思想。每个git版本库彼此是独立的，默认是没有通知机制的，任意一个版本库更新了，其他人压根不知道，git也不会主动联网去获取更新——因为Linus大神设计git就是为了避免SVN/CVS必须联网才能使用的诟病。clone之后，每个人得到的都是完整的一份版本库的拷贝，因此就算中央仓库挂掉了，随便找个人的版本库放上去就能恢复了。
+因此git同步版本库一定是手工操作的，对应的命令就是fetch(本地同步远程)和push(远程同步本地)。
+<font color='red'>所以，你想要看到远程分支，必须使用git fetch获取远程更新之后再看。再继续 git branch -r 就能看到了</font>
+
+
+### 查看当前的远程库
+- git remote  要查看当前配置有哪些远程仓库，可以用 git remote 命令，它会列出每个远程库的简短名字。在克隆完某个项目后，至少可以看到一个名为 origin 的远程库，Git 默认使用这个名字来标识你所克隆的原始仓库,也可以加上 -v 选项（译注：此为 --verbose 的简写，取首字母），显示对应的克隆地址：
+  ```
+  $ git remote -v 
+  origin  git://github.com/schacon/ticgit.git (fetch)
+  origin  git://github.com/schacon/ticgit.git (push)
+  ```
+### 添加远程仓库
+- git remote add [shortname] [url]，要添加一个新的远程仓库，可以指定一个简单的名字，以便将来引用，运行 git remote add [shortname] [url]，
+  ```
+  $ git remote 
+  origin
+  $ git remote add pb git://github.com/paulboone/ticgit.git
+  $ git remote -v
+  origin  git://github.com/schacon/ticgit.git
+  pb  git://github.com/paulboone/ticgit.git
+  ```
+
+### 查看远程仓库信息
+- git remote show [remote-name] 我们可以通过命令 git remote show [remote-name] 查看某个远程仓库的详细信息
+
+### 远程仓库的删除和重命名
+- git remote rename [修改的名称] [修改后的名称] ,比如想把 pb 改成 paul，可以这么运行：git remote rename pb paul
 
 #### 配置信息
 - 配置用户名：git config user.name "testName"
@@ -92,4 +130,3 @@ git checkout -b dev2 origin/dev2  这条命令若成功，将会在本地创建�
 
 ### <font color='red'>注意</font>
 - 如果在远程代码库创建的分支，直接 git branch -a 是显示不出来远程分支的，需要git pull拉取之后，再git branch -a 才能看到远程分支
-
