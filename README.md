@@ -77,7 +77,7 @@ Git push origin dev-20180622
 - git push origin dev //将本地dev分支推送到远程,这条命令表示，将本地的dev分支推送到origin主机的dev分支。如果后者不存在，则会被新建。
 - git push origin :dev  //这条命令省略本地分支名，则表示删除指定的远程dev分支，因为这等同于推送一个空的本地分支到远程分支。git push origin :dev 等同于 git push origin --delete dev
 
--git checkout --track origin/branch_name 如果远程新建了一个分支，本地没有该分支,可以利用 git checkout --track origin/branch_name ，这时本地会新建一个分支名叫 branch_name ，会自动跟踪远程的同名分支 branch_name
+- git checkout --track origin/branch_name 如果远程新建了一个分支，本地没有该分支,可以利用 git checkout --track origin/branch_name ，这时本地会新建一个分支名叫 branch_name ，会自动跟踪远程的同名分支 branch_name
 - git checkout -b dev origin/dev //创建远程origin的dev分支到本地
 - git checkout -b 本地分支名 origin/远程分支名   // 这个就是上面命令的解释，将远程git仓库里的指定分支拉取到本地（本地不存在的分支）
 这个将会自动创建一个新的本地分支，并与指定的远程分支关联起来，例如远程仓库里有个分支dev2,我本地没有该分支，我要把dev2拉到我本地：
